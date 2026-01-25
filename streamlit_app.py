@@ -4,17 +4,29 @@ import json
 
 # 🔹 Replace with your Firebase Realtime Database URL
 FIREBASE_URL = "https://vibeclock-default-rtdb.firebaseio.com/Servo.json"
+FIREBASE_URL_NAME = "https://vibeclock-default-rtdb.firebaseio.com/name.json"
 
 st.title("Firebase GET & POST Demo")
 
 # -------- POST a value --------
 st.subheader("POST a value")
 new_value = st.number_input("Enter a number to save", value=90, step=1)
+new_name= st.text_input("Enter a name to save", value='anonymous')
 
 if st.button("Save to Firebase"):
     try:
         # Use PUT to overwrite the value
         response = requests.put(FIREBASE_URL, data=json.dumps(new_value))
+        if response.status_code == 200:
+            st.success(f"Value {new_value} saved successfully!")
+        else:
+            st.error(f"Error: {response.text}")
+    except Exception as e:
+        st.error(f"Exception occurred: {e}")
+
+    try:
+        # Use PUT to overwrite the value
+        response = requests.put(FIREBASE_URL_NAME, data=json.dumps(new_name))
         if response.status_code == 200:
             st.success(f"Value {new_value} saved successfully!")
         else:

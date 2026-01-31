@@ -4,11 +4,11 @@ import json
 
 vibe_set = ["Harshed", "Waning", "Mid", "Top Tier","Immaculate"]
 vibe_values = {}
-vibe_values["Harshed"] = 0
-vibe_values["Waning"] = 1*180/4
+vibe_values["Harshed"] = 180
+vibe_values["Waning"] = 3*180/4
 vibe_values["Mid"] = 2*180/4
-vibe_values["Top Tier"] = 3*180/4
-vibe_values["Immaculate"] = 4*180/4
+vibe_values["Top Tier"] = 1*180/4
+vibe_values["Immaculate"] = 0
 
 inverted_vibe_values = {value: key for key, value in vibe_values.items()}
 
